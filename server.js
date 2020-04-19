@@ -25,9 +25,9 @@ setInterval(() => {
 
 
  
-ws.on('message', function incoming(data) {
+wss.on('message', function incoming(data) {
   console.log(data);
 });
-ws.on('message', function open() {
-  ws.send('data');
+wss.on('message', function open() {
+ client.send('data');
 });
