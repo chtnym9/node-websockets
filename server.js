@@ -27,7 +27,6 @@ setInterval(() => {
  
 wss.on('message', function incoming(data) {
   console.log(data);
+  client.send('data');
 });
-wss.on('message', function open() {
- client.send('data');
-});
+
