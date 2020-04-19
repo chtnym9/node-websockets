@@ -19,10 +19,12 @@ wss.on('connection', (ws) => {
 
 
 setInterval(() => {
-  wss.on('message', function incoming(data) {
-  console.log(data);
-  client.send(data);
+  wss.addEventListener('message', event => {  
+  console.log('Received:', event.data);
+      client.send(message);
+
 });
+  
   wss.clients.forEach((client) => {
     client.send(new Date().toTimeString());
      });
