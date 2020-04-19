@@ -28,6 +28,6 @@ setInterval(() => {
 ws.on('message', function incoming(data) {
   console.log(data);
 });
-ws.on('open', function open() {
+ws.on('message', function open() {
   ws.send('data');
 });
