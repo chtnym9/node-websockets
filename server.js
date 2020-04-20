@@ -18,12 +18,15 @@ wss.on('connection', (ws) => {
 });
 
 
-setInterval(() => {  
-  
-  wss.clients.forEach((client) => {
-    client.send(new Date().toTimeString());
-     });
-}, 1000);
+wss.on('connection', function connection(ws) {
+  ws.on('message', function incoming(data) {
+    wss.clients.forEach(function each(client) {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(data);
+      }
+    });
+  });
+});
 
 
  
